@@ -3,14 +3,33 @@
 <head>
     <title></title>
 	<meta charset="utf-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 <body>
 		<h1>Register to add your business</h1>
     <form>
-    	<label>Name: </label><input type="text" name="name"><br/>
-    	<label>Email:</label> <input type="email" name="emailaddress"><br/>
-    	<label>Password:</label> <input type="password" name = "password"><br/>
-    	<input type="button" name="submitButton" value = "Register">
+    	<label>Name: </label><input type="text"  id="nameid" name="name"><br/>
+    	<label>Email:</label> <input type="email" name="emailaddress" id="emailid"><br/>
+    	<label>Cell:</label> <input type="text" name="phonenumber" id="phonenumberid"><br/>
+    	<label>Password:</label> <input type="password" name = "password" id="passid"><br/>
+    	<input type="button" id="buttonid" name="submitButton" value = "Register">
+   </form>
 </body>
+<script type="text/javascript">
+
+var name_new = document.getElementById("nameid").value;
+var email = document.getElementById("emailid").value;
+var pass = document.getElementById("passid").value;
+var phone = document.getElementById("phonenumberid").value;
+	//alert("name");
+	$(document).ready(function(){
+    $("#buttonid").click(function(){
+        $.post("http://localhost:8080/RegisterUser",{ name : name_new, email: email, password : pass, Cell:phone},
+        function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    });
+});
+</script>
 </html>
