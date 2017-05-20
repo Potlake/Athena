@@ -30,6 +30,13 @@ public class User {
    // @Column(name="cell", length = 10)
     String cellNumber;
 
+    public User( String name, String email, String password, String cellNumber){
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.cellNumber = cellNumber;
+    }
+
     public Long getId(){
         return id;
     }

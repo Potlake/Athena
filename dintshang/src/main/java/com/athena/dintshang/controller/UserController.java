@@ -19,7 +19,6 @@ public class UserController {
     @Autowired
     UserService userService = new UserService();
 
-
     @RequestMapping(value = "/registerUser" , method = RequestMethod.POST)
     public ResponseEntity<User> createUser(User user){
         System.out.println("registering user");
@@ -27,5 +26,17 @@ public class UserController {
         return new ResponseEntity<User>(result, HttpStatus.ACCEPTED);
 
     }
+
+    @RequestMapping(value = "/getUser" , method = RequestMethod.GET)
+    public ResponseEntity<User> getUser(User user){
+        System.out.println("getting user");
+        //User result = userService.createUser(user);
+
+        User result = new User("mamelo", "mamelo@gmail.com","password", "012536412");
+        return new ResponseEntity<User>(result, HttpStatus.ACCEPTED);
+
+    }
+
+
 
 }
